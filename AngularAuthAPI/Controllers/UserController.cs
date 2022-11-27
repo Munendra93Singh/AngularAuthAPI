@@ -23,6 +23,7 @@ namespace AngularAuthAPI.Controllers
     {
       _authContext = appDbContext;
     }
+    //Get/Api/Login with Authorization using JWT
     [HttpPost("authenticate")]
     public async Task<IActionResult> Authenticate([FromBody] User userObj)
     {
@@ -51,6 +52,7 @@ namespace AngularAuthAPI.Controllers
         Message= "Login Success!"
       });
     }
+     // Get/Api/Registeration
     [HttpPost("register")]
     public async Task<IActionResult> RegisterUser([FromBody] User userObj)
     {
@@ -122,7 +124,8 @@ namespace AngularAuthAPI.Controllers
       var token =jwtTokenHandler.CreateToken(tokenDescripter);
       return jwtTokenHandler.WriteToken(token);
     }
-    //[Authorize]
+    //Get/Api/GetData
+    //[Authorize]---without Authorize we can't access time auth
     [HttpGet]
     public async Task<ActionResult<User>>GetAllUsers()
     {
